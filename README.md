@@ -9,15 +9,15 @@ Ideal for themes based on CSS custom properties (CSS variables).
 
 ## Demo
 
-Online demo [link here](https://hcz.github.io/storybook-addons/examples/storybook-themepack-example/demo).
+Online demo [link here](https://hcz.github.io/storybook-addon-themepack-v6/demo/).
 
-Demo source [code](https://github.com/hcz/storybook-addons/tree/master/examples/storybook-themepack-example).
+Demo source [code](https://github.com/hcz/storybook-addon-themepack-v6).
 
 ![Example](docs/assets/preview.png)
 
 Feel free to test this addon in your local environment: `npm run demo`.
 
-## Storybook v. 5.x.x usage
+## Usage
 
 Install:
 ```bash
@@ -30,47 +30,36 @@ npm install --save-dev @storybook/components @storybook/api @storybook/addons
 Then register addon:
 
 ```javascript
-// addons.js
-import 'storybook-themepack/register';
+// main.js
+module.exports = {
+    "addons": [
+        'storybook-addon-themepack'
+    ]
+}
 ```
 
 And add some configuration:
 ```javascript
-// config.js
-import {addParameters} from '@storybook/react';
-
 const gaps = {
     // Some pretty plain CSS in this values
     gapSmall: '--gap: 12px;',
     gapMedium: '--gap: 16px;'
 };
 
-addParameters({
-    themepack: {
-        pack: {
-            gap: [ 'Gap', pack(gaps) ]
-        }
-    },
-});
-
-```
-
-Voilà! Now you can use all the power of themes based on CSS custom properties.
-
-Also you can add per-story configuration:
-
-```javascript
-storiesOf('Your Library 🎨', module)
-    .addParameters({
+export default {
+    title: 'Components/MyComponent',
+    parameters: {
         themepack: {
             pack: {
                 gap: [ 'Gap', pack(gaps) ]
             }
         }
-     })
+    }
+}
 
-    .add('example', () => <p>example</p>);
 ```
+
+Voilà! Now you can use all the power of themes based on CSS custom properties.
 
 ## TypeScript
 
