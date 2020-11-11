@@ -1,6 +1,6 @@
 {
 	"name": "storybook-addon-themepack",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Storybook addon for theme packs",
 	"author": "Serge Osipov <cubisto@ya.ru>",
 	"main": "dist",
