@@ -1,0 +1,6 @@
+npm-debug.log
+**/**/node_modules
+**/**/dist
+
+# do not fix dependencies
+package-lock.json
