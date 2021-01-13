@@ -7,9 +7,13 @@ import {useAddonState, useParameter} from '@storybook/api';
 import {StyledButton, StyledIcon, StyledLabel} from './styled';
 import {Preview} from '../Preview';
 import {ADDON_ID, PARAM_KEY} from '../../constants';
-import {updateIframe} from '../../utils';
+import {updateIframe, isLocalFile} from '../../utils';
 
 export const Theme: React.FC = () => {
+	if (isLocalFile()) {
+		return null;
+	}
+
 	const {
 		preloadedState,
 		pack,

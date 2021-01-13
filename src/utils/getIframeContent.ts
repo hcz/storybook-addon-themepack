@@ -1,3 +1,5 @@
+import {isLocalFile} from './isLocalFile';
+
 /**
  * Retrieves iframe content
  *
@@ -6,7 +8,12 @@
 export const getIframeContent = (iframe: HTMLIFrameElement): Document | null | undefined => {
 	const isIframe = iframe && iframe.tagName === 'IFRAME';
 
-	if (isIframe && iframe.contentWindow) {
+	if (location.origin === 'file://') {
+		// Prevent CORS for local file
+		return;
+	}
+
+	if (isIframe && iframe.contentWindow && isLocalFile()) {
 		return iframe.contentWindow.document || iframe.contentDocument;
 	}
 };
